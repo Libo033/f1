@@ -1,0 +1,23 @@
+export interface IRace {
+  year: number;
+  gp: string;
+  name: string;
+  long: number;
+  date: string;       // formato: 3-5 de marzo
+  curves: {
+    left: number;
+    rigth: number;
+  };
+  record: string;     // formato: Lewis Hamilton - 1:27.264 - (2020)
+  image: string;
+  backgroud: string;
+  podium: {
+    first: string;
+    second: string;
+    third: string;
+  };
+  best_lap: string;   // formato: Fernando Alonso - 1:14.014
+  pole: string;       // formato: Carlos Sainz
+  suspended: boolean;
+  raced: boolean;
+}
