@@ -1,0 +1,130 @@
+/*#region ADMIN */
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e10600;
+}
+
+.background {
+  width: 60%;
+  height: 100%;
+  filter: invert(100%);
+}
+
+.formulario {
+  width: 40%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 45px;
+  padding-inline: 6%;
+  border-radius: 21px 0px 0px 21px;
+  border-left: 1px solid gray;
+  padding-bottom: 4.5rem;
+}
+
+.formulario h1 {
+  font-size: 3em;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario label {
+  font-size: 1.11em;
+  font-weight: 500;
+}
+
+.formulario button {
+  transition: 150ms ease-in-out 0s;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 1px solid gray;
+  padding-block: 6px;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: black;
+  cursor: pointer;
+}
+
+.formulario button:hover {
+  transition: 150ms ease-in-out 0s;
+  background-color: #e10600;
+  color: white;
+}
+/*#endregion */
+
+@media (min-width: 640px) and (max-width: 1024px) and (orientation: landscape) {
+  /*#region ADMIN */
+  .background {
+    width: 50%;
+  }
+  
+  .formulario {
+    width: 50%;
+    padding-bottom: 0.9rem;
+  }
+  /*#endregion */
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  /*#region ADMIN */
+  .page {
+    justify-content: center;
+    align-items: center;
+    background-color: #e10600;
+    position: relative;
+  }
+
+  .background {
+    width: 81%;
+    position: absolute;
+  }
+
+  .formulario {
+    width: 48%;
+    height: 66%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 99;
+    gap: 42px;
+    border-radius: 21px;
+    border: 2px solid gray;
+    padding-bottom: 0rem;
+  }
+  /*#endregion */
+}
+
+@media (min-width: 210px) and (max-width: 768px) and (orientation: portrait) {
+  /*#region ADMIN */
+  .page {
+    justify-content: center;
+    align-items: center;
+    background-color: #e10600;
+    position: relative;
+  }
+
+  .background {
+    width: 90%;
+    height: 69%;
+    position: absolute;
+  }
+
+  .formulario {
+    width: 96%;
+    height: 57%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 99;
+    gap: 42px;
+    border-radius: 21px;
+    border: 2px solid gray;
+    padding-bottom: 0rem;
+  }
+  /*#endregion */
+}

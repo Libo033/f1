@@ -1,12 +1,13 @@
+/*#region NAVIGATIONBAR */
 .nav {
-  background-color: #ff1801;
+  background-color: #e10600;
   height: 10vh;
   display: flex;
   justify-content: space-between;
 }
 
 .containerLogo {
-  height: 10vh;
+  height: 100%;
   width: 20%;
   display: flex;
   justify-content: center;
@@ -35,21 +36,69 @@
 .link:hover {
   transition: 150ms ease-in-out 0s;
   background-color: whitesmoke;
-  color: #ff1801;
+  color: #e10600;
 }
 
 .containerMenu {
   display: none;
 }
+/*#endregion */
 
+/*#region OPENDRAWER */
 .openDrawer {
   display: none;
 }
+/*#endregion */
+
+/*#region LASTRACE */
+.lastRace {
+  width: 100%;
+  height: fit-content;
+  background-color: rgb(60, 60, 60);
+  padding-inline: 1.8%;
+  padding-block: 1%;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.22em;
+  color: whitesmoke;
+  letter-spacing: 1px;
+}
+
+.circuit {
+  text-align: center;
+  font-size: 1.5em;
+  color: whitesmoke;
+  margin: 1.2rem 0 0.3rem 0;
+}
+
+.imageCircuitContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.imageCircuit {
+  width: 25%;
+  border-radius: 3px;
+}
+/*#endregion */
 
 @media (min-width: 640px) and (max-width: 1024px) and (orientation: landscape) {
+  /*#region NAVIGATIONBAR */
+  .nav {
+    height: 18vh;
+  }
+
+  .containerLinks {
+    width: 42%;
+  }
+  /*#endregion */
 }
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  /*#region NAVIGATIONBAR */
   .containerLogo {
     width: 30%;
   }
@@ -57,13 +106,15 @@
   .containerLinks {
     width: 60%;
   }
+  /*#endregion */
 }
 
-@media (min-width: 210px) and (max-width: 768px) and (orientation: portrait) {  
+@media (min-width: 210px) and (max-width: 768px) and (orientation: portrait) {
+  /*#region NAVIGATIONBAR */
   .containerLogo {
     width: 51%;
   }
-  
+
   .containerLinks {
     display: none;
   }
@@ -79,10 +130,17 @@
   .menu {
     filter: invert(99%);
   }
+  /*#endregion */
 
+  /*#region NAVIGATIONBAR */
   .openDrawer {
-    background: rgb(255,24,1);
-    background: linear-gradient(180deg, rgba(255,24,1,1) 0%, rgba(52,22,22,1) 89%, rgba(48,30,30,1) 100%);
+    background: rgb(255, 24, 1);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 24, 1, 1) 0%,
+      rgba(52, 22, 22, 1) 89%,
+      rgba(48, 30, 30, 1) 100%
+    );
     display: block;
     width: 100%;
     height: fit-content;
@@ -130,4 +188,5 @@
     background-color: transparent;
     color: white;
   }
+  /*#endregion */
 }

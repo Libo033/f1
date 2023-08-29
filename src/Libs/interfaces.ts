@@ -31,3 +31,16 @@ export interface ILayoutProps {
 export interface IOpenDrawer {
   setToggleDrawer: React.Dispatch<SetStateAction<boolean>>
 }
+
+export interface ILastRaceProps {
+  gp: string
+  name: string
+  circuit: string
+}
+
+export interface IDriver {
+  name: string
+  car: string
+  pts: number
+  nationality: string
+}
