@@ -311,6 +311,14 @@
     padding-inline: 0%;
   }
 
+  .tableContainer h2 {
+    padding-left: 3%;
+  }
+
+  .tableContainer a {
+    margin-left: 3%;
+  }
+
   .table {
     margin-top: 1.5rem;
     border-radius: 5px;
