@@ -132,6 +132,78 @@
 }
 /*#endregion */
 
+/*#region DRIVERS */
+.drivers {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableContainer {
+  padding-inline: 1.5%;
+}
+
+.tableContainer h2 {
+  font-size: 2.4em;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.table {
+  margin-top: 1.5rem;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  background-color: white;
+}
+
+.table td,
+.table th {
+  text-align: center;
+  padding: 8px;
+}
+
+.table td {
+  border-right: 1px solid #f8f8f8;
+  font-size: 13px;
+}
+
+.table thead th {
+  color: gray;
+}
+
+.table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+}
+
+.buttonGroup button {
+  display: flex;
+  padding-inline: 3px;
+  padding-block: 1px;
+  cursor: pointer;
+}
+
+.addNewDriver {
+  color: black;
+  text-decoration: none;
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding: 3px 15px;
+}
+/*#endregion */
+
 @media (min-width: 640px) and (max-width: 1024px) and (orientation: landscape) {
   /*#region ADMIN */
   .background {
@@ -231,6 +303,44 @@
 
   .dashboardDrivers img {
     display: none;
+  }
+  /*#endregion */
+
+  /*#region DRIVERS */
+  .tableContainer {
+    padding-inline: 0%;
+  }
+
+  .table {
+    margin-top: 1.5rem;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+  }
+
+  .table td,
+  .table th {
+    text-align: center;
+    padding: 3px;
+  }
+
+  .table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 9px;
+  }
+
+  .table thead th {
+    color: gray;
+  }
+
+  .table tr:nth-child(even) {
+    background: #f8f8f8;
   }
   /*#endregion */
 }

@@ -1,5 +1,6 @@
 /*#region NAVIGATIONBAR */
 .nav {
+  width: 100%;
   background-color: #e10600;
   height: 10vh;
   display: flex;
