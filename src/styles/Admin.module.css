@@ -339,7 +339,7 @@
   .table {
     margin-top: 1.5rem;
     border-radius: 5px;
-    font-size: 9px;
+    font-size: 12px;
     font-weight: normal;
     border: none;
     border-collapse: collapse;
@@ -352,12 +352,14 @@
   .table td,
   .table th {
     text-align: center;
-    padding: 3px;
+    padding: 4px;
   }
 
   .table td {
     border-right: 1px solid #f8f8f8;
-    font-size: 9px;
+    font-size: 11px;
+    flex-wrap: wrap;
+    white-space: balance;
   }
 
   .table thead th {
