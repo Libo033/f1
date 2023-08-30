@@ -37,7 +37,7 @@ export default async function handler(
         throw new Error("ID needed to modify a race");
       }
 
-      const put_race: IRace = {
+      const put_race = {
         year: req.body.year,
         gp: req.body.gp,
         name: req.body.name,

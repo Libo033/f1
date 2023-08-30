@@ -12,7 +12,7 @@ export default async function handler(
       const client: MongoClient = await clientPromise;
       const db: Db = client.db("project-f1");
 
-      const new_race: IRace = {
+      const new_race = {
         year: req.body.year,  
         gp: req.body.gp,
         name: req.body.name,

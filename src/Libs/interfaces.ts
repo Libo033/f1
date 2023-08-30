@@ -1,6 +1,7 @@
 import { SetStateAction } from "react";
 
 export interface IRace {
+  _id: string;
   year: number;
   gp: string;
   name: string;
