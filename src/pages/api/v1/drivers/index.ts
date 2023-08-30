@@ -35,7 +35,7 @@ export default async function handler(
       const client: MongoClient = await clientPromise;
       const db: Db = client.db("project-f1");
 
-      const new_driver: IDriver = {
+      const new_driver = {
         name: req.body.name,
         nationality: req.body.nationality,
         car: req.body.car,

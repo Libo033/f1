@@ -21,9 +21,9 @@ const Dashboard = () => {
             &nbsp;/&nbsp;
           </li>
           <li>
-            <Link className={styles.breadcrumbLink} href={"/admin/dashboard"}>
+            <p className={styles.breadcrumbHome}>
               Dashboard
-            </Link>
+            </p>
           </li>
         </ul>
         <div className={styles.dashboardContainer}>

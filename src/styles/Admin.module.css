@@ -86,6 +86,16 @@
   text-decoration: underline;
 }
 
+.breadcrumbHome {
+  font-size: 0.9em;
+  color: black;
+  text-decoration: none;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .dashboardContainer {
   display: flex;
   flex-direction: column;
@@ -142,6 +152,7 @@
 
 .tableContainer {
   padding-inline: 1.5%;
+  padding-bottom: 6%;
 }
 
 .tableContainer h2 {
@@ -203,6 +214,12 @@
   padding: 3px 15px;
 }
 /*#endregion */
+
+/*#region NEW */
+.formContainer {
+  padding-inline: 1.5%;
+}
+/*#endregion*/
 
 @media (min-width: 640px) and (max-width: 1024px) and (orientation: landscape) {
   /*#region ADMIN */

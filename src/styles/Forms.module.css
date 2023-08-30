@@ -1,0 +1,39 @@
+.form {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.title {
+  font-size: 2.4em;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form button {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  transition: 150ms ease-in-out 0s;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 1px solid gray;
+  padding-block: 6px;
+  font-weight: 700;
+  font-size: 1.2em;
+  color: black;
+  cursor: pointer;
+}
+
+.form button:hover {
+  transition: 150ms ease-in-out 0s;
+  background-color: #e10600;
+  color: white;
+}

@@ -29,6 +29,24 @@ const Drivers = () => {
       });
   }, []);
 
+  const handleModify = (id: string): void => {
+    router.push(`/admin/dashboard/drivers/new/${id}`);
+  };
+
+  const handleDelete = (driver: string, id: string) => {
+    if (confirm(`Estas seguro que quieres borrar a ${driver}`)) {
+      fetch(`/api/v1/drivers/${id}`, { method: "DELETE" })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deleted)
+            setDrivers(drivers.filter((driver) => driver._id !== id));
+        })
+        .catch((error) => {
+          if (error instanceof Error) console.log(error.message);
+        });
+    }
+  };
+
   return (
     <Layout>
       <div className={styles.drivers}>
@@ -46,17 +64,17 @@ const Drivers = () => {
             &nbsp;/&nbsp;
           </li>
           <li>
-            <Link
-              className={styles.breadcrumbLink}
-              href={"/admin/dashboard/drivers"}
-            >
-              Drivers
-            </Link>
+            <p className={styles.breadcrumbHome}>Drivers</p>
           </li>
         </ul>
         <div className={styles.tableContainer}>
           <h2 style={titi.style}>2023 Driver Standings</h2>
-          <Link className={styles.addNewDriver} href={"/admin/dashboard/drivers/new"}>Add New Driver</Link>
+          <Link
+            className={styles.addNewDriver}
+            href={"/admin/dashboard/drivers/new"}
+          >
+            Add New Driver
+          </Link>
           <table className={styles.table}>
             <thead>
               <tr>
@@ -71,18 +89,30 @@ const Drivers = () => {
             <tbody>
               {drivers.length > 0 ? (
                 drivers.map((driver, index) => (
-                  <tr>
-                    <td>{index+1}</td>
+                  <tr key={driver._id}>
+                    <td>{index + 1}</td>
                     <td>{driver.name}</td>
                     <td>{driver.nationality}</td>
                     <td>{driver.car}</td>
                     <td>{driver.pts}</td>
                     <td className={styles.buttonGroup}>
-                      <button>
-                        <Image src={"/img/gear.svg"} alt="gear" width={15} height={15} />
+                      <button onClick={() => handleModify(driver._id)}>
+                        <Image
+                          src={"/img/gear.svg"}
+                          alt="gear"
+                          width={15}
+                          height={15}
+                        />
                       </button>
-                      <button>
-                        <Image src={"/img/bin.svg"} alt="gear" width={15} height={15} />
+                      <button
+                        onClick={() => handleDelete(driver.name, driver._id)}
+                      >
+                        <Image
+                          src={"/img/bin.svg"}
+                          alt="gear"
+                          width={15}
+                          height={15}
+                        />
                       </button>
                     </td>
                   </tr>

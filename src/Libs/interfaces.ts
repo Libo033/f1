@@ -1,4 +1,4 @@
-import { SetStateAction } from 'react'
+import { SetStateAction } from "react";
 
 export interface IRace {
   year: number;
@@ -29,18 +29,19 @@ export interface ILayoutProps {
 }
 
 export interface IOpenDrawer {
-  setToggleDrawer: React.Dispatch<SetStateAction<boolean>>
+  setToggleDrawer: React.Dispatch<SetStateAction<boolean>>;
 }
 
 export interface ILastRaceProps {
-  gp: string
-  name: string
-  circuit: string
+  gp: string;
+  name: string;
+  circuit: string;
 }
 
 export interface IDriver {
-  name: string
-  car: string
-  pts: number
-  nationality: string
+  _id: string;
+  name: string;
+  car: string;
+  pts: number;
+  nationality: string;
 }
