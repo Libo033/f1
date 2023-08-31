@@ -6,6 +6,7 @@ import Link from "next/link";
 import { IDriver } from "@/Libs/interfaces";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { CircularProgress } from '@mui/material'
 
 const titi = Titillium_Web({
   weight: ["200", "300", "400", "600", "700", "900"],
@@ -119,7 +120,9 @@ const Drivers = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={6}>No hay Contenido</td>
+                  <td colSpan={6}>
+                    <CircularProgress />
+                  </td>
                 </tr>
               )}
             </tbody>

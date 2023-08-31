@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/Admin.module.css";
 import CircuitAdmin from "@/Components/CircuitAdmin";
+import { CircularProgress } from "@mui/material";
 
 const Races = () => {
   const [races, setRaces] = useState<IRace[]>([]);
@@ -43,14 +44,19 @@ const Races = () => {
           </li>
         </ul>
       </div>
-      <div style={{marginTop: "1.8rem"}}>
+      <div style={{ marginTop: "1.8rem" }}>
         <Link className={styles.addNewRace} href={"/admin/dashboard/races/new"}>
           Add Race
         </Link>
       </div>
       <section className={styles.allCircuits}>
-        {races.length > 0 &&
-          races.map((race: IRace) => <CircuitAdmin {...race} />)}
+        {races.length > 0 ? (
+          races.map((race: IRace) => <CircuitAdmin {...race} />)
+        ) : (
+          <div>
+            <CircularProgress />
+          </div>
+        )}
       </section>
     </Layout>
   );
