@@ -106,30 +106,32 @@ const RaceForm: React.FC<{ id: string | undefined }> = ({ id }) => {
   };
 
   useEffect(() => {
-    fetch(`/api/v1/race/${id}`, { method: "GET" })
-      .then((res) => res.json())
-      .then(({ race }) => {
-        setYear(race.year);
-        setGp(race.gp);
-        setName(race.name);
-        setLong(race.long);
-        setDate(race.date);
-        setLeft(race.curves.left);
-        setRight(race.curves.rigth);
-        setRecord(race.record);
-        setImage(race.image);
-        setBackground(race.background);
-        setFirst(race.podium.first);
-        setSecond(race.podium.second);
-        setThird(race.podium.third);
-        setBestLap(race.best_lap);
-        setPole(race.pole);
-      })
-      .catch((error) => {
-        if (error instanceof Error) {
-          console.log(error.message);
-        }
-      });
+    if (id) {
+      fetch(`/api/v1/race/${id}`, { method: "GET" })
+        .then((res) => res.json())
+        .then(({ race }) => {
+          setYear(race.year);
+          setGp(race.gp);
+          setName(race.name);
+          setLong(race.long);
+          setDate(race.date);
+          setLeft(race.curves.left);
+          setRight(race.curves.rigth);
+          setRecord(race.record);
+          setImage(race.image);
+          setBackground(race.background);
+          setFirst(race.podium.first);
+          setSecond(race.podium.second);
+          setThird(race.podium.third);
+          setBestLap(race.best_lap);
+          setPole(race.pole);
+        })
+        .catch((error) => {
+          if (error instanceof Error) {
+            console.log(error.message);
+          }
+        });
+    }
   }, [id]);
 
   return (

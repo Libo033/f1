@@ -1,7 +1,8 @@
 import clientPromise from "@/Libs/databases/mongodbConnect";
-import { IRace } from "@/Libs/interfaces";
 import { Db, InsertOneResult, MongoClient } from "mongodb";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { UploadApiResponse } from "cloudinary";
+import cloudinary from "@/Libs/databases/cloudinaryConnect";
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,8 +13,12 @@ export default async function handler(
       const client: MongoClient = await clientPromise;
       const db: Db = client.db("project-f1");
 
+      const uploaded_image: UploadApiResponse = await cloudinary.uploader.upload(req.body.image, {
+        upload_preset: "02-project-f1",
+      });
+
       const new_race = {
-        year: req.body.year,  
+        year: req.body.year,
         gp: req.body.gp,
         name: req.body.name,
         long: req.body.long,
@@ -23,7 +28,7 @@ export default async function handler(
           rigth: req.body.rigth,
         },
         record: req.body.record,
-        image: req.body.image,
+        image: uploaded_image.secure_url,
         backgroud: req.body.backgroud,
         podium: {
           first: req.body.first,
@@ -36,7 +41,9 @@ export default async function handler(
         raced: req.body.raced,
       };
 
-      const added_race: InsertOneResult = await db.collection("races").insertOne(new_race);
+      const added_race: InsertOneResult = await db
+        .collection("races")
+        .insertOne(new_race);
 
       if (!added_race) {
         throw new Error("Race cannot be uploaded");
