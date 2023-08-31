@@ -13,7 +13,6 @@ const Races = () => {
     fetch("/api/v1/calendar", { method: "GET" })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.calendar);
         setRaces(data.calendar);
       })
       .catch((error) => {
@@ -51,7 +50,7 @@ const Races = () => {
       </div>
       <section className={styles.allCircuits}>
         {races.length > 0 ? (
-          races.map((race: IRace) => <CircuitAdmin {...race} />)
+          races.map((race: IRace) => <CircuitAdmin key={race._id} {...race} />)
         ) : (
           <div>
             <CircularProgress />
