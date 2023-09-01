@@ -13,7 +13,7 @@ export interface IRace {
   };
   record: string; // formato: Lewis Hamilton - 1:27.264 - (2020)
   image: string;
-  backgroud: string;
+  backgroud: string | null;
   podium: {
     first: string;
     second: string;

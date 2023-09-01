@@ -51,41 +51,6 @@
 }
 /*#endregion */
 
-/*#region LASTRACE */
-.lastRace {
-  width: 100%;
-  height: fit-content;
-  background-color: rgb(60, 60, 60);
-  padding-inline: 1.8%;
-  padding-block: 1%;
-}
-
-.title {
-  text-align: center;
-  font-size: 2.22em;
-  color: whitesmoke;
-  letter-spacing: 1px;
-}
-
-.circuit {
-  text-align: center;
-  font-size: 1.5em;
-  color: whitesmoke;
-  margin: 1.2rem 0 0.3rem 0;
-}
-
-.imageCircuitContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.imageCircuit {
-  width: 25%;
-  border-radius: 3px;
-}
-/*#endregion */
-
 /*#region CIRCUITADMIN */
 .circuitAdmin {
   border: 3px solid gray;
@@ -168,16 +133,112 @@
 }
 /*#endregion */
 
-@media (min-width: 640px) and (max-width: 1024px) and (orientation: landscape) {
+/*#region NEXTRACE */
+.nextRace {
+  width: 100%;
+  height: fit-content;
+  background-color: #131313;
+  padding-inline: 3%;
+}
+
+.nextRaceUp {
+  padding: 1% 1% 0% 1%;
+}
+
+.nextRaceDate {
+  color: whitesmoke;
+  letter-spacing: 0.3px;
+  font-size: 1.11em;
+}
+
+.nextRaceDown {
+  padding: 0.6% 0% 1% 0%;
+  display: flex;
+  gap: 15px;
+}
+
+.nextRaceCircuitImage {
+  border-top: 1px solid #80808090;
+  border-right: 1px solid #80808090;
+  border-radius: 0px 9px 0px 0px;
+  filter: invert(93%);
+  width: 15%;
+  height: auto;
+}
+
+.nextRaceGP {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: whitesmoke;
+  letter-spacing: 1.2px;
+  font-size: 2.49em;
+  border-top: 1px solid #80808090;
+  width: 100%;
+}
+/*#endregion */
+
+/*#region FOOTER */
+.footer {
+  background-color: #131313;
+  padding-inline: 3%;
+  padding-top: 1%;
+}
+
+.footerLogoContainer {
+  border-top: 1px solid #80808099;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerLogo {
+  width: 6%;
+}
+
+.footerLogoContainer p {
+  color: gainsboro;
+  display: flex;
+  align-items: center;
+  font-size: 0.72em;
+}
+/*#endregion */
+
+@media (min-width: 640px) and (max-width: 1024px) and (max-height: 500px) and (orientation: landscape) {
   /*#region NAVIGATIONBAR */
   .nav {
-    height: 18vh;
+    height: 15vh;
   }
 
   .containerLinks {
     width: 42%;
   }
   /*#endregion */
+
+  /*#region FOOTER */
+  .footer {
+    background-color: #131313;
+    padding-inline: 3%;
+    padding-top: 1%;
+  }
+
+  .footerLogoContainer {
+    border-top: 1px solid #80808099;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footerLogo {
+    width: 12%;
+  }
+
+  .footerLogoContainer p {
+    color: gainsboro;
+    display: flex;
+    align-items: center;
+    font-size: 0.72em;
+  }
+  /*#endregion */
+
 }
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
@@ -188,6 +249,12 @@
 
   .containerLinks {
     width: 60%;
+  }
+  /*#endregion */
+
+  /*#region FOOTER */
+  .footerLogo {
+    width: 15%;
   }
   /*#endregion */
 }
@@ -270,6 +337,48 @@
     transition: 150ms ease-in-out 0s;
     background-color: transparent;
     color: white;
+  }
+  /*#endregion */
+
+  /*#region NEXTRACE */
+  .nextRace {
+    padding-inline: 3%;
+  }
+
+  .nextRaceUp {
+    padding: 3% 1% 0% 1%;
+  }
+
+  .nextRaceDate {
+    font-size: 1.2em;
+  }
+
+  .nextRaceDown {
+    padding: 1.5% 0% 3% 0%;
+    gap: 12px;
+  }
+
+  .nextRaceCircuitImage {
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    width: 90px;
+    height: 60px;
+  }
+
+  .nextRaceGP {
+    letter-spacing: 0.9px;
+    font-size: 1.8em;
+    border-top: 1px solid #808080;
+  }
+  /*#endregion */
+
+  /*#region FOOTER */
+  .footerLogo {
+    width: 21%;
+  }
+
+  .footerLogoContainer p {
+    font-size: 0.6em;
   }
   /*#endregion */
 }
