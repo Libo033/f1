@@ -1,7 +1,8 @@
 import clientPromise from "@/Libs/databases/mongodbConnect";
-import { IRace } from "@/Libs/interfaces";
 import { Db, DeleteResult, MongoClient, ObjectId, UpdateResult } from "mongodb";
 import type { NextApiRequest, NextApiResponse } from "next";
+import cloudinary from "@/Libs/databases/cloudinaryConnect";
+import { UploadApiResponse } from "cloudinary";
 
 export default async function handler(
   req: NextApiRequest,
@@ -32,6 +33,69 @@ export default async function handler(
       const client: MongoClient = await clientPromise;
       const db: Db = client.db("project-f1");
       const id: string | undefined = req.query.id?.toString();
+      let image: string = "";
+      let background: string = "";
+
+      const race: any = await db
+        .collection("races")
+        .find({ _id: new ObjectId(id) })
+        .toArray();
+
+      if (!req.body.image.includes("res.cloudinary.com")) {
+        if (req.body.image === race[0].image) {
+          image = race[0].image;
+        } else {
+          const public_id_image: string = race[0].image.slice(
+            race[0].image.indexOf("02-project-f1/") + "02-project-f1/".length,
+            race[0].image.length - 4
+          );
+
+          await cloudinary.uploader.destroy(
+            "02-project-f1/" + public_id_image,
+            {
+              resource_type: "image",
+            }
+          );
+
+          const uploaded_image: UploadApiResponse =
+            await cloudinary.uploader.upload(req.body.image, {
+              upload_preset: "02-project-f1",
+            });
+
+          image = uploaded_image.secure_url;
+        }
+      } else {
+        image = req.body.image;
+      }
+
+      if (!req.body.background.includes("res.cloudinary.com")) {
+        if (req.body.backgroud === race[0].backgroud) {
+          background = race[0].backgroud;
+        } else {
+          const public_id_background: string = race[0].backgroud.slice(
+            race[0].image.indexOf("02-project-f1/") + "02-project-f1/".length,
+            race[0].image.length - 4
+          );
+
+          console.log(public_id_background)
+
+          await cloudinary.uploader.destroy(
+            "02-project-f1/" + public_id_background,
+            {
+              resource_type: "image",
+            }
+          );
+
+          const uploaded_background: UploadApiResponse =
+            await cloudinary.uploader.upload(req.body.background, {
+              upload_preset: "02-project-f1",
+            });
+
+          background = uploaded_background.secure_url;
+        }
+      } else {
+        background = req.body.background;
+      }
 
       if (!id) {
         throw new Error("ID needed to modify a race");
@@ -48,8 +112,8 @@ export default async function handler(
           rigth: req.body.rigth,
         },
         record: req.body.record,
-        image: req.body.image,
-        backgroud: req.body.backgroud,
+        image: image,
+        backgroud: background,
         podium: {
           first: req.body.first,
           second: req.body.second,
@@ -80,6 +144,22 @@ export default async function handler(
 
       if (!id) {
         throw new Error("ID needed to delete a race");
+      }
+
+      const race: any = await db
+        .collection("races")
+        .find({ _id: new ObjectId(id) })
+        .toArray();
+
+      if (race[0].image.length > 0) {
+        const public_id_image: string = race[0].image.slice(
+          race[0].image.indexOf("02-project-f1/") + "02-project-f1/".length,
+          race[0].image.length - 4
+        );
+
+        await cloudinary.uploader.destroy("02-project-f1/" + public_id_image, {
+          resource_type: "image",
+        });
       }
 
       const deleted_race: DeleteResult = await db

@@ -12,10 +12,28 @@ export default async function handler(
     try {
       const client: MongoClient = await clientPromise;
       const db: Db = client.db("project-f1");
+      let image: string = "";
+      let background: string = "";
 
-      const uploaded_image: UploadApiResponse = await cloudinary.uploader.upload(req.body.image, {
-        upload_preset: "02-project-f1",
-      });
+      if (!req.body.image.includes("res.cloudinary.com")) {
+        const uploaded_image: UploadApiResponse = await cloudinary.uploader.upload(req.body.image, {
+          upload_preset: "02-project-f1",
+        });
+
+        image = uploaded_image.secure_url;
+      } else {
+        image = req.body.image;
+      }
+
+      if (!req.body.background.includes("res.cloudinary.com")) {
+        const uploaded_background: UploadApiResponse = await cloudinary.uploader.upload(req.body.background, {
+          upload_preset: "02-project-f1",
+        });
+
+        background = uploaded_background.secure_url;
+      } else {
+        background = req.body.background;
+      }
 
       const new_race = {
         year: req.body.year,
@@ -28,8 +46,8 @@ export default async function handler(
           rigth: req.body.rigth,
         },
         record: req.body.record,
-        image: uploaded_image.secure_url,
-        backgroud: req.body.backgroud,
+        image: image,
+        background: background,
         podium: {
           first: req.body.first,
           second: req.body.second,

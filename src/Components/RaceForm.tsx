@@ -28,46 +28,14 @@ const RaceForm: React.FC<{ id: string | undefined }> = ({ id }) => {
   const [third, setThird] = useState<string>("");
   const [bestLap, setBestLap] = useState<string>("");
   const [pole, setPole] = useState<string>("");
+  const [button, setButton] = useState<boolean>(false)
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!id) {
-      fetch(`/api/v1/race`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          year: parseInt(year),
-          gp,
-          name,
-          long: parseInt(long),
-          date,
-          left: parseInt(left),
-          rigth: parseInt(right),
-          record,
-          image,
-          background,
-          first,
-          second,
-          third,
-          best_lap: bestLap,
-          pole,
-          suspended,
-          raced,
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.added) {
-            router.push("/admin/dashboard/races");
-          }
-        })
-        .catch((error) => {
-          if (error instanceof Error) {
-            console.log(error.message);
-          }
-        });
-    } else {
+    setButton(true)
+
+    if (id) {
       fetch(`/api/v1/race/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -100,9 +68,45 @@ const RaceForm: React.FC<{ id: string | undefined }> = ({ id }) => {
         .catch((error) => {
           if (error instanceof Error) {
             console.log(error.message);
+            router.push("/admin/dashboard/races");
           }
         });
     }
+
+    fetch(`/api/v1/race`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        year: parseInt(year),
+        gp,
+        name,
+        long: parseInt(long),
+        date,
+        left: parseInt(left),
+        rigth: parseInt(right),
+        record,
+        image,
+        background,
+        first,
+        second,
+        third,
+        best_lap: bestLap,
+        pole,
+        suspended,
+        raced,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.added) {
+          router.push("/admin/dashboard/races");
+        }
+      })
+      .catch((error) => {
+        if (error instanceof Error) {
+          console.log(error.message);
+        }
+      });
   };
 
   useEffect(() => {
@@ -261,6 +265,7 @@ const RaceForm: React.FC<{ id: string | undefined }> = ({ id }) => {
           label="Background Image"
           size="small"
           autoComplete="off"
+          required
         />
         <div className={styles.formContainerInputs}>
           <TextField
@@ -350,7 +355,7 @@ const RaceForm: React.FC<{ id: string | undefined }> = ({ id }) => {
           <label htmlFor="raced">Raced</label>
         </div>
       </div>
-      <button type="submit" style={titi.style}>
+      <button type="submit" disabled={button} style={titi.style}>
         {id ? "MODIFY" : "ADD"}
       </button>
     </form>
